@@ -1,4 +1,11 @@
-from flask import render_template, request, redirect, session, current_app
+from flask import (
+    render_template,
+    request,
+    redirect,
+    session,
+    current_app,
+    flash,
+)
 from auth_blueprint import auth_blueprint
 import mysql.connector
 import bcrypt
@@ -10,10 +17,13 @@ def home():
     if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
-        # Panggil fungsi register
-        register_user(username, password)
-        return redirect("/login")
-    return render_template("index.html")
+        success, message = register_user(username, password)
+        if success:
+            flash(message, "success")
+            return redirect("/login")
+        else:
+            flash(message, "error")
+    return render_template("register.html")
 
 
 @auth_blueprint.route("/login", methods=["GET", "POST"])
@@ -50,6 +60,13 @@ def logout():
 def register_user(username, password):
     db = mysql.connector.connect(**current_app.config["DATABASE_CONFIG"])
     cursor = db.cursor()
+
+    query_check_username = "SELECT * FROM users WHERE username = %s"
+    cursor.execute(query_check_username, (username,))
+    existing_user = cursor.fetchone()
+    if existing_user:
+        return False, "Username sudah ada"
+
     salt = bcrypt.gensalt().decode("utf-8")
     hashed_password = bcrypt.hashpw(password.encode("utf-8"), salt.encode("utf-8"))
     query = "INSERT INTO users (username, password, salt) VALUES (%s, %s, %s)"
@@ -57,6 +74,8 @@ def register_user(username, password):
     cursor.execute(query, values)
     db.commit()
     cursor.close()
+
+    return True, "Berhasil Daftar"
 
 
 # Fungsi untuk login pengguna
