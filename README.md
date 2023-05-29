@@ -2,13 +2,38 @@
 
 ## Instalasi
 
-```sh
 1. Clone Project ini
-2. Install dulu virtual env dengan perintah `pip install virtualenv` di terminal
-3. Kemudian, jalankan virtual env nya dengan perintah `python -m venv .venv` di terminal
-4. Install requirements package dengan perintah `pip install -r requirements.txt`
-5. Jalankan aplikasi dengan perintah `flask run` atau `flask run --debug` untuk auto debug
+2. Install dulu virtual env dengan perintah ini di terminal :
+
+```sh
+pip install virtualenv
 ```
+
+3. Kemudian, jalankan virtual env nya dengan perintah berikut di terminal :
+
+```sh
+python -m venv .venv
+```
+
+4. Install requirements package dengan perintah berikut di terminal :
+
+```sh
+pip install -r requirements.txt
+```
+
+5. Jalankan aplikasi dengan perintah berikut di terminal :
+
+```sh
+flask run
+```
+
+atau
+
+```sh
+flask run --debug
+```
+
+Untuk auto debug
 
 ## Progress 1
 
