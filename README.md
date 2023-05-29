@@ -5,35 +5,35 @@
 1. Clone Project ini
 2. Install dulu virtual env dengan perintah ini di terminal :
 
-```sh
-pip install virtualenv
-```
+   ```sh
+   pip install virtualenv
+   ```
 
 3. Kemudian, jalankan virtual env nya dengan perintah berikut di terminal :
 
-```sh
-python -m venv .venv
-```
+   ```sh
+   python -m venv .venv
+   ```
 
 4. Install requirements package dengan perintah berikut di terminal :
 
-```sh
-pip install -r requirements.txt
-```
+   ```sh
+   pip install -r requirements.txt
+   ```
 
 5. Jalankan aplikasi dengan perintah berikut di terminal :
 
-```sh
-flask run
-```
+   ```sh
+   flask run
+   ```
 
-atau
+   atau
 
-```sh
-flask run --debug
-```
+   ```sh
+   flask run --debug
+   ```
 
-Untuk auto debug
+   Untuk auto debug
 
 ## Progress 1
 
