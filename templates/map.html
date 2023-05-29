@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Map</title>
+    <style>
+      #map {
+        height: 400px;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      function initMap() {
+        var lat = -6.873746894922272; // Ganti dengan nilai latitude yang sesuai
+        var lon = 107.57571444018072; // Ganti dengan nilai longitude yang sesuai
+
+        var mapOptions = {
+          center: { lat: lat, lng: lon },
+          zoom: 12,
+        };
+
+        var map = new google.maps.Map(
+          document.getElementById("map"),
+          mapOptions
+        );
+
+        var marker = new google.maps.Marker({
+          position: { lat: lat, lng: lon },
+          map: map,
+          title: "Lokasi saat ini",
+        });
+      }
+    </script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"
+      async
+      defer
+    ></script>
+  </body>
+</html>
