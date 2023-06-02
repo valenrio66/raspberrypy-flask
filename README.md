@@ -16,6 +16,7 @@
    ```
 
 4. Setelah install, jalankan venv nya :
+
    Jika menggunakan Command prompt atau powershell :
 
    ```sh
