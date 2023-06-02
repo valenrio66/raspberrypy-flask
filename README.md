@@ -9,19 +9,32 @@
    pip install virtualenv
    ```
 
-3. Kemudian, jalankan virtual env nya dengan perintah berikut di terminal :
+3. Kemudian, install virtual env nya dengan perintah berikut di terminal :
 
    ```sh
    python -m venv .venv
    ```
 
-4. Install requirements package dengan perintah berikut di terminal :
+4. Setelah install, jalankan venv nya :
+   Jika menggunakan Command prompt atau powershell :
+
+   ```sh
+   .venv\Scripts\Activate
+   ```
+
+   Jika menggunakan Git Bash :
+
+   ```sh
+   source .venv/Scripts/Activate
+   ```
+
+5. Install requirements package dengan perintah berikut di terminal :
 
    ```sh
    pip install -r requirements.txt
    ```
 
-5. Jalankan aplikasi dengan perintah berikut di terminal :
+6. Jalankan aplikasi dengan perintah berikut di terminal :
 
    ```sh
    flask run
@@ -46,7 +59,7 @@ Register, Login dan Dashboard
 ### Issue
 
 ```sh
-1. Setelah Login, Error (500 Internal Server Error) dengan Pesan Invalid Salt
+
 ```
 
 ## Progress 2
@@ -63,6 +76,20 @@ Template Register, Login dan Dashboard
 1. Notifikasi Alert Respon belum Bisa
 ```
 
+## Progress 3
+
+### Nama Progress
+
+```sh
+Tampilkan Maps
+```
+
+### Issue
+
+```sh
+
+```
+
 ### ToDo
 
 ```sh
@@ -74,4 +101,5 @@ Template Register, Login dan Dashboard
 ```sh
 1. Buat agar registrasi username dan email yang sama atau yang sudah ada, tidak akan bisa register
 2. Percantik halaman Register, Login dan Dashboard
+3. Menampilkan maps (leafletjs)
 ```

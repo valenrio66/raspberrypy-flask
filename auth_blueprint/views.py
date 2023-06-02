@@ -9,8 +9,10 @@ from flask import (
 from auth_blueprint import auth_blueprint
 import mysql.connector
 import bcrypt
-from geopy.geocoders import Nominatim
-import folium
+
+# from geopy.geocoders import Nominatim
+# import folium
+# import json
 
 
 # Halaman utama (register dan login)
@@ -46,22 +48,6 @@ def login():
 def dashboard():
     if "username" in session:
         username = session["username"]
-        # Mendapatkan lokasi menggunakan geopy
-        geolocator = Nominatim(user_agent='myapp')
-        location = geolocator.geocode('London, UK')
-
-        # Mendapatkan koordinat latitude dan longitude
-        lat = location.latitude
-        lon = location.longitude
-
-        # Membuat peta menggunakan folium
-        m = folium.Map(location=[lat, lon], zoom_start=12)
-
-        # Menambahkan penanda pada peta
-        folium.Marker([lat, lon], popup='Lokasi saat ini').add_to(m)
-
-        # Mengubah peta menjadi file HTML
-        m.save('map.html')
         return render_template("dashboard.html", username=username)
     else:
         return redirect("/login")
