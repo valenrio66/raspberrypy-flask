@@ -53,6 +53,21 @@ def dashboard():
         return redirect("/login")
 
 
+@auth_blueprint.route("/dashboard/tables")
+def tables():
+    return render_template("tables.html")
+
+
+@auth_blueprint.route("/dashboard/albumfoto")
+def foto():
+    return render_template("albumfoto.html")
+
+
+@auth_blueprint.route("/dashboard/albumvideo")
+def video():
+    return render_template("albumvideo.html")
+
+
 # Halaman logout
 @auth_blueprint.route("/logout")
 def logout():
