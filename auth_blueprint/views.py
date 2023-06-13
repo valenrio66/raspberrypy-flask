@@ -5,14 +5,12 @@ from flask import (
     session,
     current_app,
     flash,
+    url_for
 )
 from auth_blueprint import auth_blueprint
 import mysql.connector
 import bcrypt
-
-# from geopy.geocoders import Nominatim
-# import folium
-# import json
+from config import photos, videos
 
 
 # Halaman utama (register dan login)
@@ -113,3 +111,29 @@ def login_user(username, password):
             session["username"] = username
             return True
     return False
+
+@auth_blueprint.route('/upload-photo', methods=['GET', 'POST'])
+def upload_photo():
+    if request.method == 'POST' and 'photo' in request.files:
+        photo = request.files['photo']
+        filename = photos.save(photo)
+        # Simpan informasi file ke database
+        cur = mysql.connection.cursor()
+        cur.execute("INSERT INTO photos (filename) VALUES (%s)", (filename,))
+        mysql.connection.commit()
+        cur.close()
+        return redirect(url_for('index'))
+    return render_template('upload_photo.html')
+
+@auth_blueprint.route('/upload-video', methods=['GET', 'POST'])
+def upload_video():
+    if request.method == 'POST' and 'video' in request.files:
+        video = request.files['video']
+        filename = videos.save(video)
+        # Simpan informasi file ke database
+        cur = mysql.connection.cursor()
+        cur.execute("INSERT INTO videos (filename) VALUES (%s)", (filename,))
+        mysql.connection.commit()
+        cur.close()
+        return redirect(url_for('index'))
+    return render_template('upload_video.html')
